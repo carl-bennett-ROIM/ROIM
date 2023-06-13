@@ -1,0 +1,9 @@
+<script>
+    var faviconURL = 'https://storage.googleapis.com/msgsndr/a0nNFTUr7tSoVXhVYpfl/media/64889fcc8569080686c399ce.svg+xml' 
+
+    var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/x-icon';
+    link.rel = 'shortcut icon';
+    link.href = faviconURL
+    document.getElementsByTagName('head')[0].appendChild(link);
+</script>
