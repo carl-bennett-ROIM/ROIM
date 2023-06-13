@@ -1,0 +1,43 @@
+<script>
+var faviconURL = 'https://roimachines.com/wp-content/uploads/2023/04/favicon-32px.svg' // Upload an image into a location funnel and then use the URL here.
+var link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+link.type = 'image/x-icon';
+link.rel = 'shortcut icon';
+link.href = faviconURL
+document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+<!-- @format -->
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/svg-injector/1.1.3/svg-injector.min.js"
+integrity="sha512-LpKoEmPyokcDYSjRJ/7WgybgdAYFsKtCrGC9m+VBwcefe1vHXyUnD9fTQb3nXVJda6ny1J84UR+iBtEYm3OQmQ=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer"
+></script>
+<script>
+const getElementByFn = (selector, callback) => {
+let intervalId;
+let elements;
+clearInterval(intervalId);
+intervalId = setInterval(function () {
+elements = document.querySelectorAll(selector);
+if (!elements.length) return;
+clearInterval(intervalId);
+if (elements.length === 1) callback([...elements][0]);
+if (elements.length > 1) callback([...elements]);
+}, 300);
+setTimeout(function () {
+if (!elements.length) {
+clearInterval(intervalId);
+console.warn(selector, "This element not found");
+}
+}, 20000);
+};
+window.addEventListener("routeChangeEvent", function (e) {
+if (e.detail.to.name === "company-settings-v2") return;
+getElementByFn("nav img", (images) => {
+images.forEach((image) => {
+SVGInjector(image);
+});
+});
+});
+</script>
